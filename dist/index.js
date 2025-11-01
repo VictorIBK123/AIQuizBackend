@@ -1,0 +1,19 @@
+import express, {} from 'express';
+import generateMultChoiceRouter from './routes/gen-mult-choice.js';
+import theoryGeneratorRouter from './routes/gen-theory.js';
+const app = express();
+const PORT = 4000;
+app.use(express.json());
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+app.use('/api', theoryGeneratorRouter);
+app.use('/api', generateMultChoiceRouter);
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+//# sourceMappingURL=index.js.map
