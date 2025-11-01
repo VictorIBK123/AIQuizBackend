@@ -38,7 +38,7 @@ async function generateMultiChoice(categories: string,difficulty: string,questio
             `,
     },
   });
-  return(response.text);
+  return(response);
 }
 
 export default generateMultiChoice
