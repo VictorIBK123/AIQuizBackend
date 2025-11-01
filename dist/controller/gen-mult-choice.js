@@ -36,7 +36,7 @@ async function generateMultiChoice(categories, difficulty, questionType) {
             `,
         },
     });
-    return (response);
+    return (response.text);
 }
 export default generateMultiChoice;
 //# sourceMappingURL=gen-mult-choice.js.map
