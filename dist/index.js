@@ -1,13 +1,17 @@
 import express, {} from 'express';
 import generateMultChoiceRouter from './routes/gen-mult-choice.js';
 import theoryGeneratorRouter from './routes/gen-theory.js';
+import connectDatabase from './config/config.mongodb.js';
+import registerTokenRouter from './routes/token.register.js';
 const app = express();
 const PORT = 4000;
+await connectDatabase();
 app.use(express.json());
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
+app.use('/api', registerTokenRouter);
 app.use('/api', theoryGeneratorRouter);
 app.use('/api', generateMultChoiceRouter);
 app.get('/', (req, res) => {
