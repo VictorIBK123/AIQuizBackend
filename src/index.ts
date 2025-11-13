@@ -3,6 +3,7 @@ import generateMultChoiceRouter from './routes/gen-mult-choice.js'
 import theoryGeneratorRouter from './routes/gen-theory.js'
 import connectDatabase from './config/config.mongodb.js'
 import registerTokenRouter from './routes/token.register.js'
+import updateTokenRouter from './routes/update.token.js'
 const app = express()
 const PORT =  4000
 await connectDatabase()
@@ -14,6 +15,7 @@ app.use((err: Error, req: Request, res: Response, next: () => void) => {
 app.use('/api', registerTokenRouter)
 app.use('/api', theoryGeneratorRouter)
 app.use('/api', generateMultChoiceRouter)
+app.use('/api', updateTokenRouter)
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World!')
 })
