@@ -2,10 +2,11 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({apiKey:'AIzaSyBv-3WH7SroVCxuJdwckBSHPF8tA95O6Wc'});
 
-async function generateMultiChoice(categories: string,difficulty: string,questionType: string) {
+async function generateMultiChoice(history: string,  categories: string,difficulty: string,questionType: string) {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash-lite",
-    contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions`,
+    contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions.
+    The questions must not include any of these previous questions ${history}.`,
     config: {
       systemInstruction: `You have to give the json codes only, in the format
              [
