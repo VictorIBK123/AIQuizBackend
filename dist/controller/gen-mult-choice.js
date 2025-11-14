@@ -3,8 +3,7 @@ const ai = new GoogleGenAI({ apiKey: 'AIzaSyBv-3WH7SroVCxuJdwckBSHPF8tA95O6Wc' }
 async function generateMultiChoice(history, categories, difficulty, questionType) {
     const response = await ai.models.generateContent({
         model: "gemini-2.5-flash-lite",
-        contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions.
-    The questions must not include any of these previous questions ${history}.`,
+        contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions..`,
         config: {
             systemInstruction: `You have to give the json codes only, in the format
              [
@@ -34,7 +33,7 @@ async function generateMultiChoice(history, categories, difficulty, questionType
             Make sure your questions are random and must not include the previous ones you generated even in previous chats,
             The number of questions for each category should be roughly equal to one another
             the total number of questions you generate must be equal to the number of questions you were asked to generate
-            `,
+            The questions must not include any of these previous questions ${history}`,
         },
     });
     return (response.text);
