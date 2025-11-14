@@ -7,7 +7,7 @@ updateTokenRouter.put('/update', async (req, res) => {
         return res.status(400).json({ message: 'Email and refreshToken are required.' });
     }
     try {
-        await User.findOneAndUpdate({ email }, { refreshToken });
+        await User.findOneAndUpdate({ email }, { token: refreshToken });
     }
     catch (error) {
         return res.status(500).json({ message: 'Internal server error.' });

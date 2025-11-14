@@ -6,7 +6,7 @@ registerTokenRouter.post('/register', async (req, res) => {
     if (!email || !refreshToken) {
         return res.status(400).json({ message: 'Email and refreshToken are required.' });
     }
-    const newUser = new User({ email, refreshToken });
+    const newUser = new User({ email, token: refreshToken });
     try {
         await newUser.save();
     }

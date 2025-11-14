@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 export interface UserType extends Document {
-    refreshToken: string;
+    token: string;
     email: string;
     overallPerformance?: number;
     quizHistory?: string;
