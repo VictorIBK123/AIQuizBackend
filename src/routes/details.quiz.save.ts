@@ -9,12 +9,12 @@ import type AuthenticatedRequest  from "../types/authenticated.request.js";
 
 detailsQuizSaveRouter.post('/quiz-history/save', validateToken,  async (req: AuthenticatedRequest, res: Response) => {
     const user = req.user
-    const {quizHistory } = req.body;
-    if (!quizHistory) {
+    const {questions } = req.body;
+    if (!questions) {
         return res.status(400).send({success: false, message: 'Token and quizHistory are required.'});
     }
     try {
-        await SaveQuizHistory(user?.email||'', quizHistory);
+        await SaveQuizHistory(user?.email||'', questions);
         res.status(200).send({success: true});
     } catch (error) {
        res.status(500).send({success: false, message: 'Internal server error.'}); 

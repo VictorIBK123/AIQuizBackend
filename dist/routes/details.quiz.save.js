@@ -4,12 +4,12 @@ import SaveQuizHistory from "../controller/history.quiz.save.js";
 import validateToken from "../middleware/token.validate.js";
 detailsQuizSaveRouter.post('/quiz-history/save', validateToken, async (req, res) => {
     const user = req.user;
-    const { quizHistory } = req.body;
-    if (!quizHistory) {
+    const { questions } = req.body;
+    if (!questions) {
         return res.status(400).send({ success: false, message: 'Token and quizHistory are required.' });
     }
     try {
-        await SaveQuizHistory(user?.email || '', quizHistory);
+        await SaveQuizHistory(user?.email || '', questions);
         res.status(200).send({ success: true });
     }
     catch (error) {
