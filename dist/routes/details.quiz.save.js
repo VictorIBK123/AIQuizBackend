@@ -1,13 +1,15 @@
 import { Router } from "express";
 const detailsQuizSaveRouter = Router();
 import SaveQuizHistory from "../controller/history.quiz.save.js";
-detailsQuizSaveRouter.post('/quiz-history/save', async (req, res) => {
-    const { token, quizHistory } = req.body;
-    if (!token || !quizHistory) {
+import validateToken from "../middleware/token.validate.js";
+detailsQuizSaveRouter.post('/quiz-history/save', validateToken, async (req, res) => {
+    const user = req.user;
+    const { quizHistory } = req.body;
+    if (!quizHistory) {
         return res.status(400).send({ success: false, message: 'Token and quizHistory are required.' });
     }
     try {
-        await SaveQuizHistory(token, quizHistory);
+        await SaveQuizHistory(user?.email || '', quizHistory);
         res.status(200).send({ success: true });
     }
     catch (error) {
