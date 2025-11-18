@@ -2,7 +2,7 @@ import { Router } from "express";
 const detailsQuizSaveRouter = Router();
 import SaveQuizHistory from "../controller/history.quiz.save.js";
 import validateToken from "../middleware/token.validate.js";
-detailsQuizSaveRouter.post('/quiz-history/save', validateToken, async (req, res) => {
+detailsQuizSaveRouter.put('/quiz-history/save', validateToken, async (req, res) => {
     const user = req.user;
     const { questions } = req.body;
     if (!questions) {

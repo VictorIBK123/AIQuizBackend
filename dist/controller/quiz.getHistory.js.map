@@ -1,0 +1,1 @@
+{"version":3,"file":"quiz.getHistory.js","sourceRoot":"","sources":["../../src/controller/quiz.getHistory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,oBAAoB,CAAA;AAEzC,MAAM,cAAc,GAAG,KAAK,EAAE,KAAa,EAAC,EAAE;IAC1C,MAAM,YAAY,GAAG,MAAM,IAAI,CAAC,OAAO,CAAC,EAAC,KAAK,EAAC,CAAC,CAAA;IAChD,OAAO,YAAY,EAAE,WAAW,CAAA;AACpC,CAAC,CAAA;AAED,eAAe,cAAc,CAAA"}

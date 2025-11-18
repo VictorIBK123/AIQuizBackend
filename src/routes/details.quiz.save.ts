@@ -7,7 +7,7 @@ import type AuthenticatedRequest  from "../types/authenticated.request.js";
 
 
 
-detailsQuizSaveRouter.post('/quiz-history/save', validateToken,  async (req: AuthenticatedRequest, res: Response) => {
+detailsQuizSaveRouter.put('/quiz-history/save', validateToken,  async (req: AuthenticatedRequest, res: Response) => {
     const user = req.user
     const {questions } = req.body;
     if (!questions) {

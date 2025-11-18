@@ -5,6 +5,7 @@ import connectDatabase from './config/config.mongodb.js';
 import registerTokenRouter from './routes/token.register.js';
 import updateTokenRouter from './routes/update.token.js';
 import detailsQuizSaveRouter from './routes/details.quiz.save.js';
+import getQuizHistoryRouter from './routes/quiz.getHistory.js';
 const app = express();
 const PORT = 4000;
 await connectDatabase();
@@ -18,6 +19,7 @@ app.use('/api', theoryGeneratorRouter);
 app.use('/api', generateMultChoiceRouter);
 app.use('/api', updateTokenRouter);
 app.use('/api', detailsQuizSaveRouter);
+app.use('/api', getQuizHistoryRouter);
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
