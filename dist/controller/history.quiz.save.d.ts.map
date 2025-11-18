@@ -1,1 +1,1 @@
-{"version":3,"file":"history.quiz.save.d.ts","sourceRoot":"","sources":["../../src/controller/history.quiz.save.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,eAAe,GAAU,OAAO,MAAM,EAAE,WAAW,MAAM,kBAQ9D,CAAA;AAED,eAAe,eAAe,CAAA"}
+{"version":3,"file":"history.quiz.save.d.ts","sourceRoot":"","sources":["../../src/controller/history.quiz.save.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,eAAe,GAAU,OAAO,MAAM,EAAE,WAAW,MAAM,kBAU9D,CAAA;AAED,eAAe,eAAe,CAAA"}
