@@ -11,6 +11,7 @@ async function generateMultiChoice(email, history, categories, difficulty, quest
         }
     });
     const totalHistory = relatedQuizHistory.concat(JSON.parse(categories));
+    console.log(totalHistory);
     const response = await ai.models.generateContent({
         model: "gemini-2.5-flash-lite",
         contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions..`,
