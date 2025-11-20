@@ -40,10 +40,9 @@ async function generateMultiChoice(email, history, categories, difficulty, quest
             'category' is the category of the particular question according to the categories I gave you,
             'explanation' is just a brief explanation of the answer or how you got the answer,
             The difficulty of the questions will depend on the difficulty level I put in the prompt I gave,
-            Make sure your questions are random and must not include the previous ones you generated even in previous chats,
             The number of questions for each category should be roughly equal to one another
             the total number of questions you generate must be equal to the number of questions you were asked to generate
-            The questions must not include any of these previous questions ${totalHistory}, The questions must not include any of these previous questions ${totalHistory}, I lay very much emphasis on this`,
+            The questions you will generate must not include any of these questions ${totalHistory} and must not in any way be related to them, the questions you will generate and the questions in the history must be completely different and unrelated`,
         },
     });
     return (response.text);
