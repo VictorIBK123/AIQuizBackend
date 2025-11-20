@@ -8,11 +8,12 @@ generateMultChoiceRouter.post('/gen_mult_choice', validateToken, async (req: Aut
     if (!req.user){
         return res.status(401).json({message: "Unauthorized"})
     }
+    const email= req.user.email
     const history = req.body.history as string
     const categories = req.body.categories as string
     const difficulty = req.body.difficulty as string
     const questionType = req.body.questionType as string
-    const result = await generateMultiChoice(history, categories, difficulty, questionType)
+    const result = await generateMultiChoice(email, history, categories, difficulty, questionType)
     res.send({output: result})
 })
 

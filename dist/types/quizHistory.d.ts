@@ -1,0 +1,19 @@
+export type quizHistory = {
+    "answer": number;
+    "attempted": number;
+    "category": string;
+    "chosen": number;
+    "difficultyLevel": string;
+    "durationHr": number;
+    "durationMin": number;
+    "explanation": string;
+    "onQuestion": boolean;
+    "options": string[];
+    "question": string;
+    "quizId": number;
+    "scategory": string;
+    "score": number;
+    "validate": "each" | "all";
+    "verified": boolean;
+};
+//# sourceMappingURL=quizHistory.d.ts.map

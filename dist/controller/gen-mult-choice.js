@@ -1,6 +1,16 @@
 import { GoogleGenAI } from "@google/genai";
+import { User } from "../models/users.js";
 const ai = new GoogleGenAI({ apiKey: 'AIzaSyBv-3WH7SroVCxuJdwckBSHPF8tA95O6Wc' });
-async function generateMultiChoice(history, categories, difficulty, questionType) {
+async function generateMultiChoice(email, history, categories, difficulty, questionType) {
+    const user = await User.findOne({ email });
+    const quizHistory = JSON.parse(user?.quizHistory || '[]');
+    const flattenedCategories = JSON.parse(categories).flat();
+    const relatedQuizHistory = quizHistory.map((e) => {
+        if (flattenedCategories.includes(e.category)) {
+            return e;
+        }
+    });
+    const totalHistory = relatedQuizHistory.concat(JSON.parse(categories));
     const response = await ai.models.generateContent({
         model: "gemini-2.5-flash-lite",
         contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type ${questionType} questions..`,
@@ -33,7 +43,7 @@ async function generateMultiChoice(history, categories, difficulty, questionType
             Make sure your questions are random and must not include the previous ones you generated even in previous chats,
             The number of questions for each category should be roughly equal to one another
             the total number of questions you generate must be equal to the number of questions you were asked to generate
-            The questions must not include any of these previous questions ${history}`,
+            The questions must not include any of these previous questions ${totalHistory}, The questions must not include any of these previous questions ${totalHistory}, I lay very much emphasis on this`,
         },
     });
     return (response.text);
