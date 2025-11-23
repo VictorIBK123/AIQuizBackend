@@ -1,1 +1,1 @@
-{"version":3,"file":"token.register.d.ts","sourceRoot":"","sources":["../../src/routes/token.register.ts"],"names":[],"mappings":"AAAA,OAAgB,EAAC,MAAM,EAAC,MAAM,SAAS,CAAA;AAEvC,QAAA,MAAM,mBAAmB,EAAE,MAAyB,CAAC;AAgBrD,eAAe,mBAAmB,CAAC"}
+{"version":3,"file":"token.register.d.ts","sourceRoot":"","sources":["../../src/routes/token.register.ts"],"names":[],"mappings":"AAAA,OAAgB,EAAC,MAAM,EAAC,MAAM,SAAS,CAAA;AAEvC,QAAA,MAAM,WAAW,EAAE,MAAyB,CAAC;AA+B7C,eAAe,WAAW,CAAC"}

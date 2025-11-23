@@ -9,6 +9,7 @@ const SaveQuizHistory = async (email: string, questions: string )=>{
         let updatedQuizHistory = JSON.stringify(parsedQuizHistory.concat(parsedQuestions))
         user.quizHistory = updatedQuizHistory as string
         await user.save()
+        console.log('quiz history saved successfully')
     }
 }
 

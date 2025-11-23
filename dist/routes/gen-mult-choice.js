@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import { GoogleGenAI } from "@google/genai";
-import generateMultiChoice from '../controller/gen-mult-choice.js';
+import generateMultiChoice from '../services/gen-mult-choice.js';
 import validateToken from '../middleware/token.validate.js';
 const generateMultChoiceRouter = Router();
 generateMultChoiceRouter.post('/gen_mult_choice', validateToken, async (req, res) => {

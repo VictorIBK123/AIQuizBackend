@@ -4,4 +4,17 @@ export interface UserType extends Document {
     email: string,
     overallPerformance?: number,
     quizHistory?: string,
+    appData: appData
 }
+export type appData = {
+        overallPerformance: number, 
+        background: 'white'|'#1c1c45', 
+        myColor: '#1c1c45'|'white', 
+        allTotalQuestions: number, 
+        allQuestionType: 'multichoice'|'true&false', 
+        allDifficultyLevel: 'easy'|'normal'|'difficult', 
+        allDurationMin: number, 
+        allDurationHr: number, 
+        quizId: number, 
+        answerValidation: 'each'|'all'
+    }

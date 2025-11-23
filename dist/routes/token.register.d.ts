@@ -1,4 +1,4 @@
 import { Router } from 'express';
-declare const registerTokenRouter: Router;
-export default registerTokenRouter;
+declare const tokenRouter: Router;
+export default tokenRouter;
 //# sourceMappingURL=token.register.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"appdata.get.js","sourceRoot":"","sources":["../../src/services/appdata.get.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,oBAAoB,CAAA;AAEzC,MAAM,UAAU,GAAG,KAAK,EAAC,KAAa,EAAC,EAAE;IACrC,MAAM,IAAI,GAAG,MAAM,IAAI,CAAC,OAAO,CAAC,EAAC,KAAK,EAAC,CAAC,CAAA;IACxC,OAAO,IAAI,EAAE,OAAO,CAAA;AACxB,CAAC,CAAA;AAED,eAAe,UAAU,CAAA"}

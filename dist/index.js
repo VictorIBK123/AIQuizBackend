@@ -2,24 +2,23 @@ import express, {} from 'express';
 import generateMultChoiceRouter from './routes/gen-mult-choice.js';
 import theoryGeneratorRouter from './routes/gen-theory.js';
 import connectDatabase from './config/config.mongodb.js';
-import registerTokenRouter from './routes/token.register.js';
-import updateTokenRouter from './routes/update.token.js';
-import detailsQuizSaveRouter from './routes/details.quiz.save.js';
-import getQuizHistoryRouter from './routes/quiz.getHistory.js';
+import quizHistoryRouter from './routes/quizHistory.routes.js';
+import tokenRouter from './routes/token.routes.js';
+import appDataRouter from './routes/appdata.routes.js';
 const app = express();
-const PORT = 4000;
+const PORT = 3001;
 await connectDatabase();
 app.use(express.json());
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
-app.use('/api', registerTokenRouter);
 app.use('/api', theoryGeneratorRouter);
 app.use('/api', generateMultChoiceRouter);
-app.use('/api', updateTokenRouter);
-app.use('/api', detailsQuizSaveRouter);
-app.use('/api', getQuizHistoryRouter);
+app.use('/api/token', tokenRouter);
+// app.use('/api', detailsQuizSaveRouter)
+app.use('/api/quiz-history', quizHistoryRouter);
+app.use('/api/appdata', appDataRouter);
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });

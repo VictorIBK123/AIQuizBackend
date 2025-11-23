@@ -1,6 +1,6 @@
 import { Router } from "express";
 const detailsQuizSaveRouter = Router();
-import SaveQuizHistory from "../controller/history.quiz.save.js";
+import SaveQuizHistory from "../services/history.quiz.save.js";
 import validateToken from "../middleware/token.validate.js";
 detailsQuizSaveRouter.put('/quiz-history/save', validateToken, async (req, res) => {
     const user = req.user;

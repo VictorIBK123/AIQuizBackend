@@ -1,5 +1,5 @@
 import { Router } from "express";
-import GenerateTheory from "../controller/gen-theory.js";
+import GenerateTheory from "../services/gen-theory.js";
 
 const theoryGeneratorRouter = Router();
 theoryGeneratorRouter.post("/generate-theory", async (req, res) => {
