@@ -3,8 +3,10 @@ import { GoogleGenAI } from "@google/genai";
 import generateMultiChoice from '../services/gen-mult-choice.js';
 import validateToken from '../middleware/token.validate.js';
 import type AuthenticatedRequest from '../types/authenticated.request.js';
-const generateMultChoiceRouter = Router()
-generateMultChoiceRouter.post('/gen_mult_choice', validateToken, async (req: AuthenticatedRequest, res: Response) => {
+import generateTheory from '../services/gentheory.service.js';
+
+export const generateQuestionsRouter= Router()
+generateQuestionsRouter.post('/gen_mult_choice', validateToken, async (req: AuthenticatedRequest, res: Response) => {
     if (!req.user){
         return res.status(401).json({message: "Unauthorized"})
     }
@@ -17,5 +19,16 @@ generateMultChoiceRouter.post('/gen_mult_choice', validateToken, async (req: Aut
     res.send({output: result})
 })
 
+generateQuestionsRouter.post('/gen_theory', validateToken, async (req: AuthenticatedRequest, res: Response) => {
+    if (!req.user){
+        return res.status(401).json({message: "Unauthorized"})
+    }
+    const email= req.user.email
+    const history = req.body.history as string
+    const categories = req.body.categories as string
+    const difficulty = req.body.difficulty as string
+    const result = await generateTheory(email, history, categories, difficulty)
+    res.send({output: result})
+})
 
-export default generateMultChoiceRouter
+

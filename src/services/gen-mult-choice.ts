@@ -2,7 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { User } from "../models/users.js";
 import type { quizHistory } from "../types/quizHistory.js";
 
-const ai = new GoogleGenAI({apiKey:'AIzaSyBv-3WH7SroVCxuJdwckBSHPF8tA95O6Wc'});
+const ai = new GoogleGenAI({apiKey:process.env.GEMINI_API_KEY || ''});
 
 async function generateMultiChoice(email: string, history: string,  categories: string,difficulty: string,questionType: string) {
   const user = await User.findOne({email})
@@ -43,7 +43,7 @@ async function generateMultiChoice(email: string, history: string,  categories: 
             'answer' is the index of the array of options that is the correct answer, confirm your answer by reasoning first before giving the answer index,
             'difficultyLevel' : in the range of 1 to 100 the difficulty level can be 'easy'(range 1 to 45), 'normal'(range 45 to 80) or 'difficult'(range 81 to 100) depending on the prompt I gave you,
             'category' is the category of the particular question according to the categories I gave you,
-            'explanation' is just a brief explanation of the answer or how you got the answer,
+            'explanation' is the explanation of the answer or how you got the answer, show workings and calculations where necessary,
             The difficulty of the questions will depend on the difficulty level I put in the prompt I gave,
             The number of questions for each category should be roughly equal to one another
             the total number of questions you generate must be equal to the number of questions you were asked to generate
