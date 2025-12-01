@@ -47,11 +47,13 @@ async function generateMultiChoice(email: string, history: string,  categories: 
             The difficulty of the questions will depend on the difficulty level I put in the prompt I gave,
             The number of questions for each category should be roughly equal to one another
             the total number of questions you generate must be equal to the number of questions you were asked to generate
-            The questions you will generate must not include any of these questions ${usedHistoryQuestions} and must not in any way be related to them, the questions you will generate and the questions in the history must be completely different and unrelated`,
+            The questions you will generate must not include any of these questions ${usedHistoryQuestions} and must not in any way be related to them, the questions you will generate and the questions in the history must be completely different and unrelated.
+            Don't ever use " in ordinary texts, only use it to indicate string data type in json.`,
     },
   });
   
   console.log('questions generated successfully')
+  console.log(response.text)
   return(response.text);
 }
 

@@ -11,7 +11,7 @@ export type appData = {
         background: 'white'|'#1c1c45', 
         myColor: '#1c1c45'|'white', 
         allTotalQuestions: number, 
-        allQuestionType: 'multichoice'|'true&false', 
+        allQuestionType: 'multichoice'|'true&false'|'theory', 
         allDifficultyLevel: 'easy'|'normal'|'difficult', 
         allDurationMin: number, 
         allDurationHr: number, 
