@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     token: { type: String, required: true },
     overallPerformance: { type: Number, default: 0 },
-    quizHistory: { type: String, default: '[]' },
+    quizHistory: { type: Array, default: [] },
     appData: { type: { overallPerformance: Number,
             background: String,
             myColor: String,

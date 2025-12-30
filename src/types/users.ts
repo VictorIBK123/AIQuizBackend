@@ -1,9 +1,10 @@
 import { Document, Types } from "mongoose";
+import type { quizHistory } from "./quizHistory.js";
 export interface UserType extends Document {
     token: string,
     email: string,
     overallPerformance?: number,
-    quizHistory?: string,
+    quizHistory?: quizHistory[],
     appData: appData
 }
 export type appData = {

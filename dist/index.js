@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import express, {} from 'express';
-import { generateQuestionsRouter } from './routes/questionsgen.routes.js';
+import { generateQuestionsRouter } from './routes/questionsgen.route.js';
 import connectDatabase from './config/config.mongodb.js';
-import quizHistoryRouter from './routes/quizHistory.routes.js';
-import tokenRouter from './routes/token.routes.js';
-import appDataRouter from './routes/appdata.routes.js';
+import quizHistoryRouter from './routes/quizHistory.route.js';
+import tokenRouter from './routes/token.route.js';
+import appDataRouter from './routes/appdata.route.js';
 import { Categories } from './models/categories.js';
-import getCategoriesRouter from './routes/categories.routes.js';
+import getCategoriesRouter from './routes/categories.route.js';
+import gradeTheoryRouter from './routes/grade-theory.route.js';
 const app = express();
 const PORT = 3001;
 await connectDatabase();
@@ -21,6 +22,7 @@ app.use('/api/categories', getCategoriesRouter);
 // app.use('/api', detailsQuizSaveRouter)
 app.use('/api/quiz-history', quizHistoryRouter);
 app.use('/api/appdata', appDataRouter);
+app.use('/theory', gradeTheoryRouter);
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });

@@ -3,7 +3,9 @@ import validateToken from "../middleware/token.validate.js";
 import type AuthenticatedRequest from "../types/authenticated.request.js";
 import { User } from "../models/users.js";
 import getQuizHistory from "../services/quiz.getHistory.js";
-import SaveQuizHistory from "../services/history.quiz.save.js";
+import SaveQuizHistory from "../services/history.quiz.save.service.js";
+import { request } from "node:http";
+import delQuizHistory from "../services/quizHistoryDel.service.js";
 const quizHistoryRouter = Router();
 
 quizHistoryRouter.get('/get', validateToken, async(req: AuthenticatedRequest, res: Response)=>{
@@ -30,6 +32,20 @@ quizHistoryRouter.put('/save', validateToken,  async (req: AuthenticatedRequest,
         res.status(200).send({success: true});
     } catch (error) {
        res.status(500).send({success: false, message: 'Internal server error.'}); 
+    }
+})
+
+quizHistoryRouter.delete('/delete/:quizId', validateToken, async(req: AuthenticatedRequest, res: Response)=>{
+    const user = req.user
+    if (!user){
+        return res.status(401).json({message: "Unauthorized"})
+    }
+    const {quizId} = req.params
+    try {
+        await delQuizHistory(user.email, parseInt(quizId as string))
+        res.status(200).json({message: "Quiz history deleted successfully"})
+    } catch (error) {
+        res.status(500).json({message: "Internal server error"})
     }
 })
 

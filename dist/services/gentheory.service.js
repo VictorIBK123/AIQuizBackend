@@ -3,7 +3,7 @@ import { User } from "../models/users.js";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 const generateTheory = async (email, history, categories, difficulty) => {
     const user = await User.findOne({ email });
-    const quizHistory = JSON.parse(user?.quizHistory || '[]');
+    const quizHistory = user?.quizHistory || [];
     const flattenedCategories = JSON.parse(categories).flat();
     const relatedQuizHistory = quizHistory.filter((e) => flattenedCategories.includes(e.category));
     const totalHistory = relatedQuizHistory.concat(JSON.parse(history));
@@ -12,7 +12,7 @@ const generateTheory = async (email, history, categories, difficulty) => {
     console.log('used history length', (usedHistory.map((e) => e.question)).length);
     console.log(usedHistory.map((e) => e.question));
     const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-lite",
+        model: "gemini-2.5-flash",
         contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type theory questions and calculation problems where necessary.`,
         config: {
             systemInstruction: `You have to give the json codes only, in the format

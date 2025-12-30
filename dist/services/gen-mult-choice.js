@@ -3,7 +3,7 @@ import { User } from "../models/users.js";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 async function generateMultiChoice(email, history, categories, difficulty, questionType) {
     const user = await User.findOne({ email });
-    const quizHistory = JSON.parse(user?.quizHistory || '[]');
+    const quizHistory = user?.quizHistory || [];
     const flattenedCategories = JSON.parse(categories).flat();
     const relatedQuizHistory = quizHistory.filter((e) => flattenedCategories.includes(e.category));
     const totalHistory = relatedQuizHistory.concat(JSON.parse(history));

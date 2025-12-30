@@ -14,4 +14,5 @@ export type quizHistory={
     "scategory": string,
     "score": number,
     "validate": "each"|"all",
-    "verified": boolean}
+    "verified": boolean,
+}

@@ -1,6 +1,6 @@
 import express, {Router, type Response, type Request} from 'express'
 import { GoogleGenAI } from "@google/genai";
-import generateMultiChoice from '../services/gen-mult-choice.js';
+import generateMultiChoice from '../services/gen-mult-choice.service.js';
 import validateToken from '../middleware/token.validate.js';
 import type AuthenticatedRequest from '../types/authenticated.request.js';
 import generateTheory from '../services/gentheory.service.js';

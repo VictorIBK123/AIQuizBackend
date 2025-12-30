@@ -4,9 +4,9 @@ const SaveQuizHistory = async (email, questions) => {
     const quizHistory = user?.quizHistory;
     if (questions && user) {
         const parsedQuestions = JSON.parse(questions);
-        const parsedQuizHistory = JSON.parse(quizHistory || '[]');
-        let updatedQuizHistory = JSON.stringify(parsedQuizHistory.concat(parsedQuestions));
-        user.quizHistory = updatedQuizHistory;
+        const quizHistory2 = quizHistory || [];
+        let updatedQuizHistory = JSON.stringify(quizHistory2.concat(parsedQuestions));
+        user.quizHistory = quizHistory2.concat(parsedQuestions);
         await user.save();
         console.log('quiz history saved successfully');
     }

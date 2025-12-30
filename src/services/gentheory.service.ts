@@ -4,7 +4,7 @@ import type { quizHistory } from "../types/quizHistory.js";
 const ai = new GoogleGenAI({apiKey:process.env.GEMINI_API_KEY || ''});
 const generateTheory = async(email: string, history: string, categories: string, difficulty: string  )=>{
     const user = await User.findOne({email})
-      const quizHistory:quizHistory[]  = JSON.parse(user?.quizHistory||'[]')
+      const quizHistory:quizHistory[]  = user?.quizHistory||[]
       const flattenedCategories: string[] = JSON.parse(categories).flat()
       const relatedQuizHistory = quizHistory.filter((e: quizHistory)=>
         flattenedCategories.includes(e.category)
@@ -15,7 +15,7 @@ const generateTheory = async(email: string, history: string, categories: string,
       console.log('used history length',(usedHistory.map((e)=>e.question)).length )
       console.log(usedHistory.map((e)=>e.question))
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-lite",
+        model: "gemini-2.5-flash",
         contents: `Generate 5 total random questions of categories ${categories} with difficulty level ${difficulty} and type theory questions and calculation problems where necessary.`,
         config: {
           systemInstruction: `You have to give the json codes only, in the format
